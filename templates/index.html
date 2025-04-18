@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quotes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Random Quotes Generator</h1>
+
+        <form method="POST">
+            <button type="submit">Get Random Quote</button>
+        </form>
+
+        {% if quote %}
+        <div class="quote-container">
+            <blockquote>
+                "{{ quote.content }}"
+            </blockquote>
+            <p class="author">— {{ quote.author }}</p>
+            <div class="tags">
+                {% for tag in quote.tags %}
+                <span class="tag">{{ tag }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
